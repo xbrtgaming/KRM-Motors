@@ -1,0 +1,6 @@
+DATABASE
+- Mobil (id_mobil, type, tahun, kilometer, spesifikasi, gambar, status, jenis, created_at, updated_at )
+- Brand (id_brand, nama brand, created_at, updated_at )
+- Category ( id_category, jenis, created_at, updated_at )
+- Pengguna ( id_pengguna, nama pengguna , email, no telp, password, level, created_at, updated_at ) 
+- Status ( id_status, status created_at, updated_at )
