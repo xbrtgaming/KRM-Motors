@@ -46,7 +46,7 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>CarServ</h2>
+            <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>KRM Motors</h2>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -59,7 +59,7 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu fade-up m-0">
-                        <a href="booking.html" class="dropdown-item">Booking</a>
+                        <a href="booking.html" class="dropdown-item">Buy Cars</a>
                         <a href="team.html" class="dropdown-item">Technicians</a>
                         <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                         <a href="404.html" class="dropdown-item">404 Page</a>
@@ -84,10 +84,9 @@
                         <div class="container">
                             <div class="row align-items-center justify-content-center justify-content-lg-start">
                                 <div class="col-10 col-lg-7 text-center text-lg-start">
-                                    <h6 class="text-white text-uppercase mb-3 animated slideInDown">// Car Servicing //
+                                    <h6 class="text-white text-uppercase mb-3 animated slideInDown">// Buy Cars //
                                     </h6>
-                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Qualified Car Repair
-                                        Service Center</h1>
+                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Find & Get Your Dream Car</h1>
                                     <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Learn More<i
                                             class="fa fa-arrow-right ms-3"></i></a>
                                 </div>
@@ -140,7 +139,7 @@
                     <div class="d-flex py-5 px-4">
                         <i class="fa fa-certificate fa-3x text-primary flex-shrink-0"></i>
                         <div class="ps-4">
-                            <h5 class="mb-3">Quality Servicing</h5>
+                            <h5 class="mb-3">Quality Control</h5>
                             <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
                             <a class="text-secondary border-bottom" href="">Read More</a>
                         </div>
@@ -150,7 +149,7 @@
                     <div class="d-flex bg-light py-5 px-4">
                         <i class="fa fa-users-cog fa-3x text-primary flex-shrink-0"></i>
                         <div class="ps-4">
-                            <h5 class="mb-3">Expert Workers</h5>
+                            <h5 class="mb-3">Expert Inspector</h5>
                             <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
                             <a class="text-secondary border-bottom" href="">Read More</a>
                         </div>
@@ -160,7 +159,7 @@
                     <div class="d-flex py-5 px-4">
                         <i class="fa fa-tools fa-3x text-primary flex-shrink-0"></i>
                         <div class="ps-4">
-                            <h5 class="mb-3">Modern Equipment</h5>
+                            <h5 class="mb-3">Warranty</h5>
                             <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
                             <a class="text-secondary border-bottom" href="">Read More</a>
                         </div>
@@ -189,8 +188,7 @@
                 </div>
                 <div class="col-lg-6">
                     <h6 class="text-primary text-uppercase">// About Us //</h6>
-                    <h1 class="mb-4"><span class="text-primary">CarServ</span> Is The Best Place For Your
-                        Auto Care</h1>
+                    <h1 class="mb-4"><span class="text-primary">KRMMotors</span> The Best Automotive Importer Dealer In Indonesian</h1>
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam
                         amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna
                         dolore erat amet</p>
@@ -246,13 +244,13 @@
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">
                     <i class="fa fa-check fa-2x text-white mb-3"></i>
-                    <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
-                    <p class="text-white mb-0">Years Experience</p>
+                    <h2 class="text-white mb-2" data-toggle="counter-up">9.4</h2>
+                    <p class="text-white mb-0">Review Experience</p>
                 </div>
                 <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.3s">
                     <i class="fa fa-users-cog fa-2x text-white mb-3"></i>
-                    <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
-                    <p class="text-white mb-0">Expert Technicians</p>
+                    <h2 class="text-white mb-2" data-toggle="counter-up">1200</h2>
+                    <p class="text-white mb-0">Expert Inspector</p>
                 </div>
                 <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.5s">
                     <i class="fa fa-users fa-2x text-white mb-3"></i>
@@ -261,8 +259,8 @@
                 </div>
                 <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.7s">
                     <i class="fa fa-car fa-2x text-white mb-3"></i>
-                    <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
-                    <p class="text-white mb-0">Compleate Projects</p>
+                    <h2 class="text-white mb-2" data-toggle="counter-up">689</h2>
+                    <p class="text-white mb-0">Car Sold</p>
                 </div>
             </div>
         </div>
