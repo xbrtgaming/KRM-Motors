@@ -20,6 +20,7 @@ Route::view('/', 'home.index')->name('home');
 Route::middleware(['admin'])->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dasbor', 'index')->name('dasbor');
+        Route::get('/user', 'user')->name('user');
     });
 });
 

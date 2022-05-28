@@ -1,4 +1,5 @@
 @extends('home/template/index')
+@section('title', 'Home | KRM Motors')
 @section('content')
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5">
