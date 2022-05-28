@@ -57,7 +57,7 @@
                                             </ul>
                                         </div>
                                     @endif
-                                    <form action="{{ route('register_act') }}" method="POST" role="form">
+                                    <form action="{{ route('user_register') }}" method="POST" role="form">
                                         @csrf
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Name</label>

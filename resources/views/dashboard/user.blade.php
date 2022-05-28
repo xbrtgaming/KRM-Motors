@@ -7,11 +7,10 @@
             <div class="card">
                 <div class="card-body">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-linkedin btn-sm float-end"
-                        onClick="window.location.reload()">Reload</button>
-                    <button type="button" class="btn bg-gradient-success btn-sm float-end" data-bs-toggle="modal"
-                        data-bs-target="#add" style="margin-right:5px;">
-                        Add
+                    <button type="button" class="btn btn-linkedin btn-sm float-end material-icons"
+                        onClick="window.location.reload()">refresh</button>
+                    <button type="button" class="btn bg-gradient-success btn-sm float-end material-icons"
+                        data-bs-toggle="modal" data-bs-target="#add" style="margin-right:5px;">add
                     </button>
 
                     <!-- Modal -->
@@ -21,14 +20,14 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title font-weight-normal" id="exampleModalLabel">
-                                        Edit User</h5>
+                                        Add User</h5>
                                     <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
                                         aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="#" method="POST">
+                                    <form action="{{ route('admin_register') }}" method="POST">
                                         @csrf
                                         <div class="row">
                                             <div class="input-group input-group-outline my-3">
@@ -55,13 +54,13 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn bg-gradient-secondary"
                                         data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn bg-gradient-success">Confirm</button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -86,9 +85,8 @@
                                     <td>{{ $users->email }}</td>
                                     <td>
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn bg-gradient-primary btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
-                                            Edit
+                                        <button type="button" class="btn bg-gradient-primary btn-sm fas fa-pencil-alt"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         </button>
 
                                         <!-- Modal -->
@@ -142,7 +140,46 @@
                                             </div>
                                         </div>
                                         <a href="#" class="btn btn-warning btn-sm">Reset Password</a>
-                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                        <form action="{{ route('user_delete', $users->id) }}" method="GET"
+                                            class="d-inline">
+                                            <button type="button" class="btn bg-gradient-danger btn-sm fas fa-trash"
+                                                data-bs-toggle="modal" data-bs-target="#user_delete{{ $users->id }}">
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="user_delete{{ $users->id }}" tabindex="-1"
+                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title font-weight-normal"
+                                                                id="exampleModalLabel">
+                                                                Delete User</h5>
+                                                            <button type="button" class="btn-close text-dark"
+                                                                data-bs-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p> Delete <b>{{ $users->name }}</b> </p>
+                                                            Are you sure?
+                                                            <li><b>Yes</b> to delete</li>
+                                                            <li><b>Cancel</b> to cancel</li>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn bg-gradient-secondary"
+                                                                data-bs-dismiss="modal">Cancel</button>
+                                                            <form action="{{ route('user_delete', $users->id) }}"
+                                                                method="GET" class="d-inline">
+                                                                @csrf
+                                                                <button type="submit"
+                                                                    class="btn bg-gradient-danger">Yes</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

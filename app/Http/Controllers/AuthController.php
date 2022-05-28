@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Route;
 
 class AuthController extends Controller
 {
@@ -37,25 +38,50 @@ class AuthController extends Controller
 
     public function register_act(Request $request)
     {
-        $request->validate([
-            'name' => ['required'],
-            'number' => ['required', 'unique:users', 'numeric', 'min:10'],
-            'email' => ['required', 'email', 'unique:users'],
-            'password' => ['required', 'same:confirm_password', 'min:8'],
-            'confirm_password' => ['required'],
-        ]);
+        if ($request->route('user_register')) {
+            $request->validate([
+                'name' => ['required'],
+                'number' => ['required', 'unique:users', 'numeric', 'min:10'],
+                'email' => ['required', 'email', 'unique:users'],
+                'password' => ['required', 'same:confirm_password', 'min:8'],
+                'confirm_password' => ['required'],
+            ]);
+        } else if ($request->route('admin_register')) {
+            $request->validate([
+                'name' => ['required'],
+                'number' => ['required', 'unique:users', 'numeric', 'min:10'],
+                'email' => ['required', 'email', 'unique:users'],
+                'password' => ['required', 'same:confirm_password', 'min:8'],
+            ]);
+        }
 
-        $user = User::create([
+        $data = [
             'name' => $request->name,
             'number' => $request->number,
-            'level' => "user",
+            'level',
             'email' => $request->email,
             'password' => bcrypt($request->password),
+        ];
+
+        if (Route::currentRouteName() == 'user_register') {
+            $data['level'] = 'user';
+        } else if (Route::currentRouteName() == 'admin_register') {
+            $data['level'] = $request->level;
+        }
+
+        $user = User::create([
+            'name' => $data['name'],
+            'number' => $data['number'],
+            'level' => $data['level'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
         ]);
+    }
 
-        Auth::login($user);
-
-        return redirect('login');
+    public function user_register(Request $request)
+    {
+        $this->register_act($request);
+        return redirect()->route('login');
     }
 
     public function logout(Request $request)

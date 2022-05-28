@@ -21,6 +21,8 @@ Route::middleware(['admin'])->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dasbor', 'index')->name('dasbor');
         Route::get('/user', 'user')->name('user');
+        Route::post('/admin_register', 'admin_register')->name('admin_register');
+        Route::get('/user_delete/{id}', 'user_delete')->name('user_delete');
     });
 });
 
@@ -29,5 +31,5 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/login_act', 'authenticate')->name('login_act');
     Route::get('/logout', 'logout')->name('logout');
     Route::get('/register', 'register')->name('register');
-    Route::post('/register_act', 'register_act')->name('register_act');
+    Route::post('/user_register', 'user_register')->name('user_register');
 });
