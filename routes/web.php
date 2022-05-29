@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -18,11 +20,12 @@ use App\Http\Controllers\AuthController;
 Route::view('/', 'home.index')->name('home');
 
 Route::middleware(['admin'])->group(function () {
-    Route::controller(DashboardController::class)->group(function () {
-        Route::get('/dasbor', 'index')->name('dasbor');
+    Route::get('/dasbor', [DashboardController::class, 'index'])->name('dasbor');
+    Route::controller(UserController::class)->group(function () {
         Route::get('/user', 'user')->name('user');
         Route::post('/admin_register', 'admin_register')->name('admin_register');
         Route::get('/user_delete/{id}', 'user_delete')->name('user_delete');
+        Route::post('/user_edit/{id}', 'user_edit')->name('user_edit');
     });
 });
 
@@ -32,4 +35,8 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/logout', 'logout')->name('logout');
     Route::get('/register', 'register')->name('register');
     Route::post('/user_register', 'user_register')->name('user_register');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/find_car', [CarController::class, 'findcar'])->name('find_car');
 });

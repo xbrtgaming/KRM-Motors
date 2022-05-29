@@ -21,6 +21,7 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('dashboard') }}/assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('DataTables') }}/datatables.min.css">
+    <link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/toastr.min.css">
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -38,7 +39,7 @@
             </a>
         </div>
         <hr class="horizontal light mt-0 mb-2">
-        <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
+        <div class="collapse navbar-collapse w-auto max-height-vh-100" id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link text-white {{ Route::is('dasbor') ? 'bg-gradient-primary' : '' }}"
@@ -72,7 +73,7 @@
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">view_in_ar</i>
                         </div>
-                        <span class="nav-link-text ms-1">Virtual Reality</span>
+                        <span class="nav-link-text ms-1">Car</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -80,7 +81,7 @@
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
                         </div>
-                        <span class="nav-link-text ms-1">RTL</span>
+                        <span class="nav-link-text ms-1">Brand</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -88,7 +89,7 @@
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">notifications</i>
                         </div>
-                        <span class="nav-link-text ms-1">Notifications</span>
+                        <span class="nav-link-text ms-1">Category</span>
                     </a>
                 </li>
             </ul>
@@ -516,6 +517,9 @@
             $('#datatable').DataTable();
         });
     </script>
+    <script src="{{ asset('dashboard') }}/assets/js/toastr.min.js"></script>
+    @stack('toastr')
+
 </body>
 
 </html>

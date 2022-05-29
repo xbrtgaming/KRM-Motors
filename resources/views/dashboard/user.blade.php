@@ -10,11 +10,11 @@
                     <button type="button" class="btn btn-linkedin btn-sm float-end material-icons"
                         onClick="window.location.reload()">refresh</button>
                     <button type="button" class="btn bg-gradient-success btn-sm float-end material-icons"
-                        data-bs-toggle="modal" data-bs-target="#add" style="margin-right:5px;">add
+                        data-bs-toggle="modal" data-bs-target="#user_add" style="margin-right:5px;">add
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    <div class="modal fade" id="user_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -86,12 +86,11 @@
                                     <td>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn bg-gradient-primary btn-sm fas fa-pencil-alt"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            data-bs-toggle="modal" data-bs-target="#user_edit{{ $users->id }}">
                                         </button>
 
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="user_edit{{ $users->id }}" tabindex="-1"
+                                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -103,43 +102,54 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="#" method="POST">
+                                                        @if ($errors->any())
+                                                            <div class="alert alert-danger">
+                                                                <ul>
+                                                                    @foreach ($errors->all() as $error)
+                                                                        <li>{{ $error }}</li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                        @endif
+                                                        <form action="{{ route('user_edit', $users->id) }}" method="POST">
                                                             @csrf
                                                             <div class="row">
                                                                 <div class="input-group input-group-outline my-3">
                                                                     <label class="form-label">Name</label>
-                                                                    <input type="text" class="form-control" name="name">
+                                                                    <input type="text" class="form-control" name="name"
+                                                                        value="{{ $users->name }}">
                                                                 </div>
                                                                 <div class="input-group input-group-outline my-3">
                                                                     <label class="form-label">Number</label>
                                                                     <input type="number" class="form-control"
-                                                                        name="number">
+                                                                        name="number" value="{{ $users->number }}">
                                                                 </div>
                                                                 <div class="input-group input-group-outline my-3">
                                                                     <label class="form-label">Email</label>
-                                                                    <input type="email" class="form-control" name="email">
+                                                                    <input type="email" class="form-control" name="email"
+                                                                        value="{{ $users->email }}">
                                                                 </div>
                                                                 <div class="input-group input-group-static mb-4">
                                                                     <label for="level">Level &nbsp;</label>
                                                                     <select name="level">
-                                                                        <option>1</option>
+                                                                        <option>{{ $users->level }}</option>
                                                                         <option value="user">User</option>
                                                                         <option value="admin">Admin</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                        </form>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn bg-gradient-secondary"
                                                             data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn bg-gradient-primary">Save
+                                                        <button type="submit" class="btn bg-gradient-primary">Save
                                                             changes</button>
                                                     </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="#" class="btn btn-warning btn-sm">Reset Password</a>
+                                        <a href="#" class="btn btn-warning btn-sm fas fa-lock"></a>
                                         <form action="{{ route('user_delete', $users->id) }}" method="GET"
                                             class="d-inline">
                                             <button type="button" class="btn bg-gradient-danger btn-sm fas fa-trash"
@@ -191,3 +201,17 @@
 
 
 @endsection
+
+@if (session()->has('message'))
+    @push('toastr')
+        <script>
+            toastr['{{ session('type') }}']('{{ session('message') }}', '{{ session('title') }}')
+        </script>
+    @endpush
+@elseif ($errors->any())
+    @push('toastr')
+        <script>
+            toastr['error']('Failed to update user', 'Failed')
+        </script>
+    @endpush
+@endif

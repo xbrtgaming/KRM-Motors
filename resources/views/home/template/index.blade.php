@@ -79,12 +79,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-            </div>
+            @if (!Route::is('find_car'))
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="service.html" class="nav-item nav-link">Services</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+            @endif
 
             @auth
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
@@ -102,10 +104,19 @@
                 <a href="{{ route('login') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Sign In<i
                         class="fa fa-arrow-right ms-3"></i></a>
             @endguest
-            @auth
-                <a href="#" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Find Car<i
-                        class="fa fa-arrow-right ms-3"></i></a>
-            @endauth
+
+            @if (!Route::is('find_car'))
+                @auth
+                    <a href="{{ route('find_car') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Find Car<i
+                            class="fa fa-arrow-right ms-3"></i></a>
+                @endauth
+            @else
+                @auth
+                    <a href="{{ route('home') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Exit<i
+                            class="fa fa-arrow-left ms-3"></i></a>
+                @endauth
+            @endif
+
         </div>
     </nav>
     <!-- Navbar End -->
