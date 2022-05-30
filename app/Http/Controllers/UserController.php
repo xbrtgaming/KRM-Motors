@@ -12,7 +12,7 @@ class UserController extends Controller
     public function user()
     {
         $user = User::all();
-        return view('dashboard/user', compact('user'));
+        return view('dashboard.user.index', compact('user'));
     }
 
     public function admin_register(Request $request)

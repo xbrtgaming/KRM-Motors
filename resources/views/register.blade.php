@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('dashboard') }}/assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="{{ asset('dashboard') }}/assets/img/favicon.png">
     <title>
-        Material Dashboard 2 by Creative Tim
+        KRM Motors | Register
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"

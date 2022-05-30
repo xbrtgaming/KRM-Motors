@@ -27,6 +27,13 @@ Route::middleware(['admin'])->group(function () {
         Route::get('/user_delete/{id}', 'user_delete')->name('user_delete');
         Route::post('/user_edit/{id}', 'user_edit')->name('user_edit');
     });
+
+    Route::controller(CarController::class)->group(function () {
+        Route::get('/car', 'car')->name('car');
+        Route::get('/car/detail/{id}', 'car_detail')->name('car_detail');
+        Route::post('/car_add', 'car_add')->name('car_add');
+        Route::get('/car_date', 'search_date')->name('search_date');
+    });
 });
 
 Route::controller(AuthController::class)->group(function () {
