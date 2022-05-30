@@ -68,4 +68,19 @@ class CarController extends Controller
         $car = Car::whereBetween('created_at', [$start_date, $end_date])->get();
         return view('dashboard.car.date', compact('car'));
     }
+
+    public function print(Request $request)
+    {
+        $request->validate([
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ]);
+
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        $status = "sold";
+
+        $car = Car::whereBetween('created_at', [$start_date, $end_date])->get();
+        return view('dashboard.car.print', compact('car'));
+    }
 }

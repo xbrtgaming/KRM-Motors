@@ -6,15 +6,11 @@
         <h4>Car Database</h1>
             <div class="card">
                 <div class="card-body">
-                    <!-- Button trigger modal -->
-                    <form action="{{ route('search_date') }}" method="GET" class="d-inline">
+                    <form action="{{ route('print') }}" method="GET" class="d-inline">
                         <label>Find by Date </label>
                         <input type="date" name="start_date">
                         <input type="date" name="end_date">
-                        <button type="submit">Search</button>
-
-                        <a href="#" type="button">Print</a>
-
+                        <button type="submit" class="btn btn-dark btn-sm">Search</button>
                     </form>
 
 

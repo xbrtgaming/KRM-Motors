@@ -7,11 +7,14 @@
             <div class="card">
                 <div class="card-body">
                     <!-- Button trigger modal -->
-                    <form action="{{ route('search_date') }}" method="GET">
+                    <form action="{{ route('search_date') }}" method="GET" class="d-inline">
                         <label>Find by Date </label>
                         <input type="date" name="start_date">
                         <input type="date" name="end_date">
-                        <button type="submit">Search</button>
+                        <button type="submit" class="btn btn-dark btn-sm">Search</button>
+
+
+                        <a href="#" class="btn btn-dark btn-sm">Print</a>
                     </form>
 
                     <button type="button" class="btn btn-linkedin btn-sm float-end material-icons"
