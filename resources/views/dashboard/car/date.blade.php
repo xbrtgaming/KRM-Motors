@@ -30,7 +30,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title font-weight-normal" id="exampleModalLabel">
-                                        Add User</h5>
+                                        Add Car</h5>
                                     <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
                                         aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -125,66 +125,86 @@
                                         <a href="{{ route('car_detail', $cars->id) }}"
                                             class="btn btn-linkedin fas fa-eye btn-sm"></a>
 
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn bg-gradient-primary btn-sm fas fa-pencil-alt"
-                                            data-bs-toggle="modal" data-bs-target="#user_edit{{ $cars->id }}">
+                                        <button type="button"
+                                            class="btn bg-gradient-success btn-sm float-end material-icons"
+                                            data-bs-toggle="modal" data-bs-target="#user_add" style="margin-right:5px;">add
                                         </button>
 
-                                        <div class="modal fade" id="user_edit{{ $cars->id }}" tabindex="-1"
-                                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="user_add" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title font-weight-normal" id="exampleModalLabel">
-                                                            Edit User</h5>
+                                                            Edit Car</h5>
                                                         <button type="button" class="btn-close text-dark"
                                                             data-bs-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        @if ($errors->any())
-                                                            <div class="alert alert-danger">
-                                                                <ul>
-                                                                    @foreach ($errors->all() as $error)
-                                                                        <li>{{ $error }}</li>
-                                                                    @endforeach
-                                                                </ul>
-                                                            </div>
-                                                        @endif
-                                                        <form action="{{ route('user_edit', $cars->id) }}" method="POST">
+                                                        <form action="{{ route('car_add') }}" method="POST"
+                                                            enctype="multipart/form-data">
                                                             @csrf
                                                             <div class="row">
                                                                 <div class="input-group input-group-outline my-3">
-                                                                    <label class="form-label">Name</label>
-                                                                    <input type="text" class="form-control" name="name"
-                                                                        value="{{ $cars->name }}">
+                                                                    <label>Image &nbsp;</label>
+                                                                    <input type="file" name="image">
                                                                 </div>
                                                                 <div class="input-group input-group-outline my-3">
-                                                                    <label class="form-label">Number</label>
+                                                                    <label class="form-label">Type</label>
+                                                                    <input type="text" class="form-control" name="type">
+                                                                </div>
+                                                                <div class="input-group input-group-outline my-3">
+                                                                    <label class="form-label">Price</label>
                                                                     <input type="number" class="form-control"
-                                                                        name="number" value="{{ $cars->number }}">
+                                                                        name="price">
                                                                 </div>
                                                                 <div class="input-group input-group-outline my-3">
-                                                                    <label class="form-label">Email</label>
-                                                                    <input type="email" class="form-control" name="email"
-                                                                        value="{{ $cars->email }}">
+                                                                    <label class="form-label">Year</label>
+                                                                    <input type="number" class="form-control" name="year">
+                                                                </div>
+                                                                <div class="input-group input-group-outline my-3">
+                                                                    <label class="form-label">Range</label>
+                                                                    <input type="text" class="form-control" name="range">
                                                                 </div>
                                                                 <div class="input-group input-group-static mb-4">
-                                                                    <label for="level">Level &nbsp;</label>
-                                                                    <select name="level">
-                                                                        <option>{{ $cars->level }}</option>
-                                                                        <option value="user">User</option>
-                                                                        <option value="admin">Admin</option>
+                                                                    <label for="category">Category &nbsp;</label>
+                                                                    <select name="category">
+                                                                        <option value="suv">SUV</option>
                                                                     </select>
+                                                                </div>
+                                                                <div class="input-group input-group-static mb-4">
+                                                                    <label for="status">Status &nbsp;</label>
+                                                                    <select name="status">
+                                                                        <option value="sold">Sold</option>
+                                                                        <option value="ready">Ready</option>
+                                                                        <option value="not_ready">Not Ready</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="container">
+                                                                    <label for="specification">Specification</label>
+                                                                    <textarea id="editor" class="form-control" name="specification" rows="10" cols="50"></textarea>
+                                                                    <script src="{{ asset('ckeditor5') }}/ckeditor.js"></script>
+                                                                    <script>
+                                                                        ClassicEditor
+                                                                            .create(document.querySelector('#editor'))
+                                                                            .then(editor => {
+                                                                                console.log(editor);
+                                                                            })
+                                                                            .catch(error => {
+                                                                                console.error(error);
+                                                                            });
+                                                                    </script>
                                                                 </div>
                                                             </div>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn bg-gradient-secondary"
                                                             data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn bg-gradient-primary">Save
-                                                            changes</button>
+                                                        <button type="submit"
+                                                            class="btn bg-gradient-success">Confirm</button>
                                                     </div>
                                                     </form>
                                                 </div>

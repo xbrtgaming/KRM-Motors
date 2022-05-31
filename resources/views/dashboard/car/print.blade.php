@@ -11,8 +11,13 @@
 
 <body>
     <div class="container">
-        <h1 class="text-center">REPORT</h1>
+        <h1 class="text-center">SOLD CAR REPORT</h1>
         <hr>
+        Date : <strong>{{ $_GET['start_date'] . ' - ' . $_GET['end_date'] }}</strong>
+        <br>
+        Total Sold : <strong>{{ $data['status'] }}</strong>
+        <br>
+        Total Profit : <strong>Rp {{ number_format($data['price'], 2) }}</strong>
         <table class="table table-bordered mt-5 align-content-center">
             <thead>
                 <tr>
@@ -27,15 +32,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>asdasd</td>
-                    <td>asdasd</td>
-                    <td>asdasd</td>
-                    <td>asdasd</td>
-                </tr>
+                @foreach ($data['car'] as $cars)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $cars->type }}</td>
+                        <td>{{ $cars->year }}</td>
+                        <td>{{ Str::upper($cars->category) }}</td>
+                        <td>{{ $cars->range }}</td>
+                        <td>Rp {{ number_format($cars->price, 2) }}</td>
+                        <td>{{ $cars->created_at }}</td>
+                        <td>{{ $cars->updated_at }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
 </body>
+<footer>
+    <script>
+        window.print();
+    </script>
+</footer>
 
 </html>

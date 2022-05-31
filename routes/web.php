@@ -32,8 +32,10 @@ Route::middleware(['admin'])->group(function () {
         Route::get('/car', 'car')->name('car');
         Route::get('/car/detail/{id}', 'car_detail')->name('car_detail');
         Route::post('/car_add', 'car_add')->name('car_add');
-        Route::get('/car_date', 'search_date')->name('search_date');
         Route::get('/print', 'print')->name('print');
+        Route::get('/car_edit/{id}', 'car_edit')->name('car_edit');
+        Route::post('/car_update/{id}', 'car_update')->name('car_update');
+        Route::get('/car_delete/{id}', 'car_delete')->name('car_delete');
     });
 });
 

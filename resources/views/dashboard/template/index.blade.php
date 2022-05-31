@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white {{ Route::is('car') ? 'bg-gradient-primary' : '' }}"
+                    <a class="nav-link text-white {{ Route::is('car') || Route::is('car_edit') ? 'bg-gradient-primary' : '' }}"
                         href="{{ route('car') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">view_in_ar</i>
@@ -519,7 +519,17 @@
         });
     </script>
     <script src="{{ asset('dashboard') }}/assets/js/toastr.min.js"></script>
-
+    <script src="{{ asset('ckeditor5') }}/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
     @stack('toastr')
 
 </body>
