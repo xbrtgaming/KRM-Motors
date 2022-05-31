@@ -10,7 +10,7 @@
                         <label>Find by Date </label>
                         <input type="date" name="start_date">
                         <input type="date" name="end_date">
-                        <button type="submit" class="btn btn-dark btn-sm">Search</button>
+                        <button type="submit">Print</button>
                     </form>
 
                     <button type="button" class="btn btn-linkedin btn-sm float-end material-icons"
@@ -33,6 +33,15 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <form action="{{ route('car_add') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
@@ -72,7 +81,7 @@
                                             </div>
                                             <div class="container">
                                                 <label for="specification">Specification</label>
-                                                <textarea id="editor2" name="specification" rows="10" cols="50"></textarea>
+                                                <textarea id="editor" name="specification" rows="10" cols="50"></textarea>
                                             </div>
                                         </div>
                                 </div>
@@ -102,7 +111,7 @@
                             @foreach ($data['car'] as $cars)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td><img src="{{ asset('storage') }}/{{ $cars->image }}" alt="" width="100px"></td>
+                                    <td><img src="{{ asset('storage') }}/{{ $cars->image }}" alt="" width="48px"></td>
                                     <td>{{ $cars->type }}</td>
                                     <td>{{ $cars->year }}</td>
                                     <td>{{ Str::upper($cars->category) }}</td>
@@ -164,6 +173,14 @@
 
 @endsection
 
+@push('datatable')
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable();
+        });
+    </script>
+@endpush
+
 @if (session()->has('message'))
     @push('toastr')
         <script>
@@ -173,7 +190,7 @@
 @elseif ($errors->any())
     @push('toastr')
         <script>
-            toastr['error']('Failed to update user', 'Failed')
+            toastr['error']('Please try again', 'Failed')
         </script>
     @endpush
 @endif

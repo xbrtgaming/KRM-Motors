@@ -11,7 +11,8 @@ class CarController extends Controller
 {
     public function findcar()
     {
-        return view('home.findcar');
+        $cars = Car::all();
+        return view('home.findcar', compact('cars'));
     }
 
     public function car()
@@ -47,7 +48,14 @@ class CarController extends Controller
         ];
 
         Car::create($data);
-        return redirect()->back();
+
+        $toast = [
+            'title' => 'Success',
+            'message' => 'New car has been added',
+            'type' => 'success',
+        ];
+
+        return redirect()->back()->with($toast);
     }
 
     public function car_detail($id)
@@ -114,7 +122,14 @@ class CarController extends Controller
         }
 
         Car::where('id', $id)->update($data);
-        return redirect()->route('car');
+
+        $toast = [
+            'title' => 'Success',
+            'message' => 'Car has been updated',
+            'type' => 'success',
+        ];
+
+        return redirect()->route('car')->with($toast);
     }
 
     public function car_delete($id)

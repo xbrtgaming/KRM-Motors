@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\AuthController;
 
@@ -36,6 +37,12 @@ Route::middleware(['admin'])->group(function () {
         Route::get('/car_edit/{id}', 'car_edit')->name('car_edit');
         Route::post('/car_update/{id}', 'car_update')->name('car_update');
         Route::get('/car_delete/{id}', 'car_delete')->name('car_delete');
+    });
+
+    Route::controller(MessageController::class)->group(function () {
+        Route::get('/message', 'message')->name('message');
+        Route::post('/message_add', 'message_add')->name('message_add');
+        Route::get('/message_confirm/{id}', 'message_confirm')->name('message_confirm');
     });
 });
 

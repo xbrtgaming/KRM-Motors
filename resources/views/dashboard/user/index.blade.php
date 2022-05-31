@@ -215,3 +215,10 @@
         </script>
     @endpush
 @endif
+@push('datatable')
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable();
+        });
+    </script>
+@endpush

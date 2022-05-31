@@ -61,7 +61,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white {{ Route::is('message') ? 'bg-gradient-primary' : '' }} "
-                        href="../pages/billing.html">
+                        href="{{ route('message') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">receipt_long</i>
                         </div>
@@ -69,20 +69,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white {{ Route::is('car') || Route::is('car_edit') ? 'bg-gradient-primary' : '' }}"
+                    <a class="nav-link text-white {{ Route::is('car') || Route::is('car_edit') || Route::is('car_detail') ? 'bg-gradient-primary' : '' }}"
                         href="{{ route('car') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">view_in_ar</i>
                         </div>
                         <span class="nav-link-text ms-1">Car</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="../pages/rtl.html">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
-                        </div>
-                        <span class="nav-link-text ms-1">Brand</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -513,11 +505,7 @@
     <script src="{{ asset('dashboard') }}/assets/js/material-dashboard.min.js?v=3.0.0"></script>
     <script src="{{ asset('DataTables') }}/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('DataTables') }}/datatables.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#datatable').DataTable();
-        });
-    </script>
+    @stack('datatable')
     <script src="{{ asset('dashboard') }}/assets/js/toastr.min.js"></script>
     <script src="{{ asset('ckeditor5') }}/ckeditor.js"></script>
     <script>
