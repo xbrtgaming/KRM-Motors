@@ -17,6 +17,15 @@
                                 <label>Image &nbsp;</label>
                                 <input type="file" name="image" value="{{ $cars->image }}">
                             </div>
+                            <div class="input-group input-group-static mb-4">
+                                <label for="brand">Brand &nbsp;</label>
+                                <select name="brand">
+                                    <option value="{{ $cars->brand }}">{{ $cars->brand }}</option>
+                                    @foreach ($brands as $brand)
+                                        <option value="{{ $brand->brand }}">{{ $brand->brand }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label">Type</label>
                                 <input type="text" class="form-control" name="type" value="{{ $cars->type }}">

@@ -31,6 +31,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('carserv') }}/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/toastr.min.css">
 </head>
 
 <body>
@@ -79,7 +80,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            @if (!Route::is('find_car'))
+            @if (!Route::is('find_car') && !Route::is('find_detail'))
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="index.html" class="nav-item nav-link active">Home</a>
                     <a href="about.html" class="nav-item nav-link">About</a>
@@ -105,7 +106,7 @@
                         class="fa fa-arrow-right ms-3"></i></a>
             @endguest
 
-            @if (!Route::is('find_car'))
+            @if (!Route::is('find_car') && !Route::is('find_detail'))
                 @auth
                     <a href="{{ route('find_car') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Find Car<i
                             class="fa fa-arrow-right ms-3"></i></a>
@@ -210,6 +211,8 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('carserv') }}/js/main.js"></script>
+    <script src="{{ asset('dashboard') }}/assets/js/toastr.min.js"></script>
+    @stack('toastr')
 </body>
 
 </html>

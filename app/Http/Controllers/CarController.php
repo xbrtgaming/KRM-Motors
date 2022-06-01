@@ -4,21 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Car;
+use App\Models\Brand;
+use App\Models\Message;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
-    public function findcar()
-    {
-        $cars = Car::all();
-        return view('home.findcar', compact('cars'));
-    }
-
     public function car()
     {
         $data = [
             'car' => Car::all(),
+            'brand' => Brand::all()
         ];
         return view('dashboard.car.index', compact('data'));
     }
@@ -27,6 +24,7 @@ class CarController extends Controller
     {
         $request->validate([
             'type' => 'required',
+            'brand' => 'required',
             'price' => 'required',
             'year' => 'required',
             'range' => 'required',
@@ -38,6 +36,7 @@ class CarController extends Controller
 
         $data = [
             'type' => $request->type,
+            'brand' => $request->brand,
             'price' => $request->price,
             'year' => $request->year,
             'range' => $request->range,
@@ -60,8 +59,11 @@ class CarController extends Controller
 
     public function car_detail($id)
     {
-        $car = Car::find($id);
-        return view('dashboard.car.detail', compact('car'));
+        $data = [
+            'car' => Car::find($id),
+            'count' => Message::where('order', $id)->count(),
+        ];
+        return view('dashboard.car.detail', $data);
     }
 
     public function print(Request $request)
@@ -85,14 +87,18 @@ class CarController extends Controller
 
     public function car_edit($id)
     {
-        $cars = Car::find($id);
-        return view('dashboard.car.edit', compact('cars'));
+        $data = [
+            'cars' => Car::find($id),
+            'brands' => Brand::all()
+        ];
+        return view('dashboard.car.edit', $data);
     }
 
     public function car_update(Request $request, $id)
     {
         $request->validate([
             'type' => 'required',
+            'brand' => 'required',
             'price' => 'required',
             'year' => 'required',
             'range' => 'required',
@@ -103,6 +109,7 @@ class CarController extends Controller
 
         $data = [
             'type' => $request->type,
+            'brand' => $request->brand,
             'price' => $request->price,
             'year' => $request->year,
             'range' => $request->range,

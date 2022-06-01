@@ -17,8 +17,8 @@ class MessageController extends Controller
     {
         $request->validate([
             'order' => 'required',
-            'email' => 'required|email',
-            'number' => 'required',
+            'email' => 'required|email|unique:messages',
+            'number' => 'required|numeric|unique:messages',
             'message' => 'required',
         ]);
 
@@ -33,7 +33,7 @@ class MessageController extends Controller
 
         $toast = [
             'title' => 'Success',
-            'message' => 'New message has been added',
+            'message' => 'Message has been sent',
             'type' => 'success',
         ];
 

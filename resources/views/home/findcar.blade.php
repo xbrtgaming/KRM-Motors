@@ -11,7 +11,6 @@
                         <img src="{{ asset('storage') }}/{{ $car->image }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $car->type }}</h5>
-
                             <p>Year : {{ $car->year }}</p>
                             <p>Rp {{ number_format($car->price, 2) }}</p>
                             @if ($car->status == 'sold')
@@ -20,7 +19,8 @@
                                 <strong class="card-text text-warning">Not Ready</strong>
                             @elseif ($car->status == 'ready')
                                 <strong class="card-text text-success">Ready</strong><br>
-                                <button class="btn btn-primary btn-sm mt-3">View</button>
+                                <a href="{{ route('find_detail', $car->id) }}"
+                                    class="btn btn-primary btn-sm mt-3">View</a>
                             @endif
                         </div>
                     </div>

@@ -49,6 +49,15 @@
                                                 <label>Image &nbsp;</label>
                                                 <input type="file" name="image">
                                             </div>
+                                            <div class="input-group input-group-static mb-4">
+                                                <label for="brand">Brand &nbsp;</label>
+                                                <select name="brand">
+                                                    @foreach ($data['brand'] as $brands)
+                                                        <option value="{{ $brands->brand }}">{{ $brands->brand }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                             <div class="input-group input-group-outline my-3">
                                                 <label class="form-label">Type</label>
                                                 <input type="text" class="form-control" name="type">
@@ -100,10 +109,10 @@
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Type</th>
+                                <th>Brand</th>
                                 <th>Year</th>
                                 <th>Category</th>
                                 <th>Status</th>
-                                <th>price</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -113,10 +122,22 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td><img src="{{ asset('storage') }}/{{ $cars->image }}" alt="" width="48px"></td>
                                     <td>{{ $cars->type }}</td>
+                                    <td>{{ $cars->brand }}</td>
                                     <td>{{ $cars->year }}</td>
                                     <td>{{ Str::upper($cars->category) }}</td>
-                                    <td>{{ Str::upper($cars->status) }}</td>
-                                    <td>Rp {{ number_format($cars->price, 2) }}</td>
+                                    <td>
+                                        @if ($cars->status == 'sold')
+                                            <span
+                                                class="badge badge-sm bg-gradient-danger">{{ Str::upper($cars->status) }}
+                                            </span>
+                                        @elseif ($cars->status == 'ready')
+                                            <span
+                                                class="badge badge-sm bg-gradient-success">{{ Str::upper($cars->status) }}
+                                            </span>
+                                        @elseif ($cars->status == 'not_ready')
+                                            <span class="badge badge-sm bg-gradient-warning">NOT READY
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ route('car_detail', $cars->id) }}"
                                             class="btn btn-linkedin fas fa-eye btn-sm"></a>
@@ -135,7 +156,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title font-weight-normal" id="exampleModalLabel">
-                                                            Delete User</h5>
+                                                            Delete Car</h5>
                                                         <button type="button" class="btn-close text-dark"
                                                             data-bs-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>

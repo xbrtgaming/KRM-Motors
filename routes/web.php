@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,5 +56,7 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/find_car', [CarController::class, 'findcar'])->name('find_car');
+    Route::get('/find_car', [HomeController::class, 'findcar'])->name('find_car');
+    Route::get('/find_detail/{id}', [HomeController::class, 'find_detail'])->name('find_detail');
+    Route::post('/message_send', [HomeController::class, 'message_send'])->name('message_send');
 });

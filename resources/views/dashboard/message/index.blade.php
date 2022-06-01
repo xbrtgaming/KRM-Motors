@@ -9,9 +9,6 @@
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-linkedin btn-sm float-end material-icons"
                         onClick="window.location.reload()">refresh</button>
-                    <button type="button" class="btn bg-gradient-success btn-sm float-end material-icons"
-                        data-bs-toggle="modal" data-bs-target="#user_add" style="margin-right:5px;">add
-                    </button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="user_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

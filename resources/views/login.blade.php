@@ -45,6 +45,15 @@
                                 </div>
                             </div>
                             <div class="card-body">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger text-light">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <form action="{{ route('login_act') }}" method="POST" role="form"
                                     class="text-start">
                                     @csrf
@@ -57,7 +66,7 @@
                                         <input type="password" class="form-control" name="password">
                                     </div>
                                     <div class="form-check form-switch d-flex align-items-center mb-3">
-                                        <input class="form-check-input" type="checkbox" id="rememberMe">
+                                        <input class="form-check-input" type="checkbox" id="rememberMe" name="remember">
                                         <label class="form-check-label mb-0 ms-2" for="rememberMe">Remember me</label>
                                     </div>
                                     <div class="text-center">

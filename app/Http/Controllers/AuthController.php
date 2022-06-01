@@ -26,6 +26,10 @@ class AuthController extends Controller
             return redirect()->route('home');
         }
 
+        if ($request->remember == "on") {
+            $request->session()->put('remember', true);
+        }
+
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');

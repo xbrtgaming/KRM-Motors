@@ -13,7 +13,8 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">{{ $car->type }}</h5>
-                        <p>Price : {{ $car->price }}</p>
+                        <p>Brand : {{ $car->brand }}</p>
+                        <p>Price : Rp {{ number_format($car->price) }} | Total Order : {{ $count }}</p>
                         <p>Year : {{ $car->year }}</p>
                         <p>Range : {{ $car->range }}</p>
                         <p>Category : {{ $car->category }}</p>
@@ -25,7 +26,8 @@
                             <small class="text-muted">Last Update :
                                 {{ $car->updated_at }}</small>
                         </p>
-                        <a href="{{ route('car_edit', $car->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{{ route('car') }}" class="btn btn-info">Back</a>
+                        <a href="{{ route('car_edit', $car->id) }}" class="btn btn-primary">Edit</a>
 
                     </div>
                 </div>
