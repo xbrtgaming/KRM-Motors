@@ -35,7 +35,7 @@ class UserController extends Controller
 
         $toast = [
             'title' => 'Success',
-            'message' => 'User removed',
+            'message' => 'User has been removed',
             'type' => 'success',
         ];
         return redirect()->back()->with($toast);
@@ -61,7 +61,7 @@ class UserController extends Controller
 
         $toast = [
             'title' => 'Success',
-            'message' => 'User update successfully',
+            'message' => 'User has been updated',
             'type' => 'success',
         ];
         return redirect()->back()->with($toast);

@@ -42,7 +42,7 @@ class AuthController extends Controller
 
     public function register_act(Request $request)
     {
-        if ($request->route('user_register')) {
+        if (Route::currentRouteName() == 'user_register') {
             $request->validate([
                 'name' => ['required'],
                 'number' => ['required', 'unique:users', 'numeric', 'min:10'],
@@ -50,12 +50,12 @@ class AuthController extends Controller
                 'password' => ['required', 'same:confirm_password', 'min:8'],
                 'confirm_password' => ['required'],
             ]);
-        } else if ($request->route('admin_register')) {
+        } else if (Route::currentRouteName() == 'admin_register') {
             $request->validate([
                 'name' => ['required'],
                 'number' => ['required', 'unique:users', 'numeric', 'min:10'],
                 'email' => ['required', 'email', 'unique:users'],
-                'password' => ['required', 'same:confirm_password', 'min:8'],
+                'password' => ['required', 'min:8'],
             ]);
         }
 

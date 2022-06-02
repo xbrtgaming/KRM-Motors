@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->integer('number')->unique();
             $table->string('order');
-            $table->string('message');
+            $table->string('message')->nullable();
             $table->timestamps();
         });
     }

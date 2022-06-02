@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Brand;
 use App\Models\Message;
+use App\Models\Category;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,7 +16,8 @@ class CarController extends Controller
     {
         $data = [
             'car' => Car::all(),
-            'brand' => Brand::all()
+            'brand' => Brand::all(),
+            'category' => Category::all()
         ];
         return view('dashboard.car.index', compact('data'));
     }
@@ -89,7 +91,8 @@ class CarController extends Controller
     {
         $data = [
             'cars' => Car::find($id),
-            'brands' => Brand::all()
+            'brands' => Brand::all(),
+            'categories' => Category::all(),
         ];
         return view('dashboard.car.edit', $data);
     }
@@ -145,6 +148,12 @@ class CarController extends Controller
         Storage::disk('public')->delete($image->image);
 
         Car::find($id)->delete();
-        return redirect()->back();
+
+        $toast = [
+            'title' => 'Success',
+            'message' => 'Car has been removed',
+            'type' => 'success',
+        ];
+        return redirect()->back()->with($toast);
     }
 }

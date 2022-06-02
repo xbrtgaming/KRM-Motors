@@ -78,11 +78,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="../pages/notifications.html">
+                    <a class="nav-link text-white {{ Route::is('category') ? 'bg-gradient-primary' : '' }} "
+                        href="{{ route('category') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">notifications</i>
                         </div>
                         <span class="nav-link-text ms-1">Category</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white {{ Route::is('brand') ? 'bg-gradient-primary' : '' }} "
+                        href="{{ route('brand') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">notifications</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Brand</span>
                     </a>
                 </li>
             </ul>

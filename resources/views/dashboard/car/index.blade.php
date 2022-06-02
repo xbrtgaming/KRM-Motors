@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="modal-body">
                                     @if ($errors->any())
-                                        <div class="alert alert-danger">
+                                        <div class="alert alert-danger text-light">
                                             <ul>
                                                 @foreach ($errors->all() as $error)
                                                     <li>{{ $error }}</li>
@@ -77,7 +77,10 @@
                                             <div class="input-group input-group-static mb-4">
                                                 <label for="category">Category &nbsp;</label>
                                                 <select name="category">
-                                                    <option value="suv">SUV</option>
+                                                    @foreach ($data['category'] as $category)
+                                                        <option value="{{ $category->name }}">{{ $category->name }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="input-group input-group-static mb-4">

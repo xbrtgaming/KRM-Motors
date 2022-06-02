@@ -19,7 +19,6 @@ class MessageController extends Controller
             'order' => 'required',
             'email' => 'required|email|unique:messages',
             'number' => 'required|numeric|unique:messages',
-            'message' => 'required',
         ]);
 
         $data = [
@@ -43,6 +42,12 @@ class MessageController extends Controller
     public function message_confirm($id)
     {
         Message::find($id)->delete();
-        return redirect()->back();
+        $toast = [
+            'title' => 'Success',
+            'message' => 'Message has been removed',
+            'type' => 'success',
+        ];
+
+        return redirect()->back()->with($toast);
     }
 }

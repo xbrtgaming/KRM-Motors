@@ -7,6 +7,9 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +48,20 @@ Route::middleware(['admin'])->group(function () {
         Route::post('/message_add', 'message_add')->name('message_add');
         Route::get('/message_confirm/{id}', 'message_confirm')->name('message_confirm');
     });
+
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('/category', 'category')->name('category');
+        Route::post('/category_add', 'category_add')->name('category_add');
+        Route::get('/category_delete/{id}', 'category_delete')->name('category_delete');
+    });
+
+    Route::controller(BrandController::class)->group(function () {
+        Route::get('/brand', 'brand')->name('brand');
+        Route::post('/brand_add', 'brand_add')->name('brand_add');
+        Route::get('/brand_delete/{id}', 'brand_delete')->name('brand_delete');
+    });
 });
+
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'login')->name('login');

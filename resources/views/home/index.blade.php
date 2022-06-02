@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="d-flex bg-light py-5 px-4">
+                    <div class="d-flex py-5 px-4">
                         <i class="fa fa-users-cog fa-3x text-primary flex-shrink-0"></i>
                         <div class="ps-4">
                             <h5 class="mb-3">Expert Inspector</h5>
@@ -97,7 +97,6 @@
         </div>
     </div>
     <!-- Service End -->
-
 
     <!-- About Start -->
     <div class="container-xxl py-5">

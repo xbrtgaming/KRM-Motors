@@ -32,6 +32,7 @@ class HomeController extends Controller
     {
         $message = new MessageController();
         $message->message_add($request);
+
         return redirect()->back();
     }
 }

@@ -46,7 +46,10 @@
                                 <label for="category">Category &nbsp;</label>
                                 <select name="category">
                                     <option value="{{ $cars->category }}">
-                                        {{ Str::upper($cars->category) }}</option>
+                                        {{ $cars->category }}</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="input-group input-group-static mb-4">

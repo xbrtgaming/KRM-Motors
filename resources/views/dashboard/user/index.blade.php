@@ -103,7 +103,7 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         @if ($errors->any())
-                                                            <div class="alert alert-danger">
+                                                            <div class="alert alert-danger text-lightr">
                                                                 <ul>
                                                                     @foreach ($errors->all() as $error)
                                                                         <li>{{ $error }}</li>
@@ -211,7 +211,7 @@
 @elseif ($errors->any())
     @push('toastr')
         <script>
-            toastr['error']('Failed to update user', 'Failed')
+            toastr['error']('Please try again', 'Failed')
         </script>
     @endpush
 @endif
