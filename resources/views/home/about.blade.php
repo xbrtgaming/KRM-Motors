@@ -1,5 +1,5 @@
 @extends('home/template/index')
-@section('title', 'Home | KRM Motors')
+@section('title', 'About | KRM Motors')
 @section('content')
     <!-- Service Start -->
     <div class="container-xxl py-5">

@@ -1,5 +1,5 @@
 @extends('home/template/index')
-@section('title', 'Home | KRM Motors')
+@section('title', 'Find Car | KRM Motors')
 @section('content')
 
     <div class="container mt-5">
