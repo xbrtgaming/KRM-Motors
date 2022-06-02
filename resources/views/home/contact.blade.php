@@ -1,5 +1,5 @@
 @extends('home/template/index')
-@section('title', 'Contact| KRM Motors')
+@section('title', 'Contact | KRM Motors')
 @section('content')
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5 p-0"
