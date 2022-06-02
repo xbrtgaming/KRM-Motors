@@ -23,6 +23,9 @@ use App\Http\Controllers\BrandController;
 */
 
 Route::view('/', 'home.index')->name('home');
+Route::view('/about', 'home.about')->name('about');
+Route::view('/services', 'home.services')->name('services');
+Route::view('/contact', 'home.contact')->name('contact');
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/dasbor', [DashboardController::class, 'index'])->name('dasbor');
