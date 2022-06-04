@@ -149,54 +149,94 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="#" class="btn btn-warning btn-sm fas fa-lock"></a>
-                                        <form action="{{ route('user_delete', $users->id) }}" method="GET"
-                                            class="d-inline">
-                                            <button type="button" class="btn bg-gradient-danger btn-sm fas fa-trash"
-                                                data-bs-toggle="modal" data-bs-target="#user_delete{{ $users->id }}">
-                                            </button>
+                                        <button type="button" class="btn bg-gradient-warning btn-sm fas fa-lock"
+                                            data-bs-toggle="modal" data-bs-target="#user_resetpassword{{ $users->id }}">
+                                        </button>
 
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="user_delete{{ $users->id }}" tabindex="-1"
-                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title font-weight-normal"
-                                                                id="exampleModalLabel">
-                                                                Delete User</h5>
-                                                            <button type="button" class="btn-close text-dark"
-                                                                data-bs-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="user_resetpassword{{ $users->id }}"
+                                            tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title font-weight-normal" id="exampleModalLabel">
+                                                            Reset user password</h5>
+                                                        <button type="button" class="btn-close text-dark"
+                                                            data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form action="{{ route('reset_pass', $users->id) }}" method="POST"
+                                                        class="d-inline">
                                                         <div class="modal-body">
-                                                            <p> Delete <b>{{ $users->name }}</b> </p>
-                                                            Are you sure?
-                                                            <li><b>Yes</b> to delete</li>
-                                                            <li><b>Cancel</b> to cancel</li>
+                                                            <p>Changing <strong>{{ $users->name }}</strong> password</p>
+                                                            <div class="input-group input-group-outline my-3">
+                                                                <label class="form-label">New Password</label>
+                                                                <input type="password" class="form-control"
+                                                                    name="password">
+                                                            </div>
+                                                            <div class="input-group input-group-outline my-3">
+                                                                <label class="form-label">Confirm Password</label>
+                                                                <input type="password" class="form-control"
+                                                                    name="password_confirm">
+                                                            </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn bg-gradient-secondary"
                                                                 data-bs-dismiss="modal">Cancel</button>
-                                                            <form action="{{ route('user_delete', $users->id) }}"
-                                                                method="GET" class="d-inline">
-                                                                @csrf
-                                                                <button type="submit"
-                                                                    class="btn bg-gradient-danger">Yes</button>
-                                                            </form>
+                                                            @csrf
+                                                            <button type="submit"
+                                                                class="btn bg-gradient-warning">Save</button>
                                                         </div>
-                                                    </div>
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                        </div>
                 </div>
+
+                <button type="button" class="btn bg-gradient-danger btn-sm fas fa-trash" data-bs-toggle="modal"
+                    data-bs-target="#user_delete{{ $users->id }}">
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="user_delete{{ $users->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title font-weight-normal" id="exampleModalLabel">
+                                    Delete User</h5>
+                                <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p> Delete <b>{{ $users->name }}</b> </p>
+                                Are you sure?
+                                <li><b>Yes</b> to delete</li>
+                                <li><b>Cancel</b> to cancel</li>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn bg-gradient-secondary"
+                                    data-bs-dismiss="modal">Cancel</button>
+                                <form action="{{ route('user_delete', $users->id) }}" method="GET"
+                                    class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="btn bg-gradient-danger">Yes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </td>
+                </tr>
+                @endforeach
+                </tbody>
+                </table>
             </div>
+    </div>
     </div>
 
 

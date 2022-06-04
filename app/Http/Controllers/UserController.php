@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Message;
 use App\Http\Controllers\AuthController\register_act;
+use App\Http\Controllers\AuthController\reset_password;
 
 class UserController extends Controller
 {
@@ -63,6 +64,18 @@ class UserController extends Controller
             'title' => 'Success',
             'message' => 'User has been updated',
             'type' => 'success',
+        ];
+        return redirect()->back()->with($toast);
+    }
+
+    public function reset_pass(Request $request, $id)
+    {
+        $user = new AuthController;
+        $user->reset_password($request, $id);
+        $toast = [
+            'title' => 'Success',
+            'type' => 'success',
+            'message' => 'Password has been reset',
         ];
         return redirect()->back()->with($toast);
     }

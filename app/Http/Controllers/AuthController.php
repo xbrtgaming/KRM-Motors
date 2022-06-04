@@ -95,4 +95,18 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('home');
     }
+
+    public function reset_password(Request $request, $id)
+    {
+        $request->validate([
+            'password' => ['required', 'same:password_confirm', 'min:8'],
+            'password_confirm' => ['required'],
+        ]);
+
+        $data = [
+            'password' => bcrypt($request->password),
+        ];
+
+        User::find($id)->update($data);
+    }
 }

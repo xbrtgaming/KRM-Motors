@@ -34,6 +34,7 @@ Route::middleware(['admin'])->group(function () {
         Route::post('/admin_register', 'admin_register')->name('admin_register');
         Route::get('/user_delete/{id}', 'user_delete')->name('user_delete');
         Route::post('/user_edit/{id}', 'user_edit')->name('user_edit');
+        Route::post('/reset_pass/{id}', 'reset_pass')->name('reset_pass');
     });
 
     Route::controller(CarController::class)->group(function () {
@@ -72,6 +73,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/logout', 'logout')->name('logout');
     Route::get('/register', 'register')->name('register');
     Route::post('/user_register', 'user_register')->name('user_register');
+    Route::post('/reset_password/{id}', 'reset_password')->name('reset_password');
 });
 
 Route::middleware(['auth'])->group(function () {
