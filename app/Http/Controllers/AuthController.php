@@ -26,10 +26,6 @@ class AuthController extends Controller
             return redirect()->route('home');
         }
 
-        if ($request->remember == "on") {
-            $request->session()->put('remember', true);
-        }
-
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
@@ -73,13 +69,7 @@ class AuthController extends Controller
             $data['level'] = $request->level;
         }
 
-        $user = User::create([
-            'name' => $data['name'],
-            'number' => $data['number'],
-            'level' => $data['level'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $user = User::create($data);
     }
 
     public function user_register(Request $request)
