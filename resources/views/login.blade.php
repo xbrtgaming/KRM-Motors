@@ -33,7 +33,7 @@
     </div>
     <main class="main-content  mt-0">
         <div class="page-header align-items-start min-vh-100"
-            style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');">
+            style="background-image: url('{{ asset('carserv') }}/img/bg-1.jpg')">
             <span class="mask bg-gradient-dark opacity-6"></span>
             <div class="container my-auto">
                 <div class="row">
@@ -88,16 +88,7 @@
                 <div class="container">
                     <div class="row align-items-center justify-content-lg-between">
                         <div class="col-12 col-md-6 my-auto">
-                            <div class="copyright text-center text-sm text-white text-lg-start">
-                                ©
-                                <script>
-                                    document.write(new Date().getFullYear())
-                                </script>,
-                                made with <i class="fa fa-heart" aria-hidden="true"></i> by
-                                <a href="https://www.creative-tim.com" class="font-weight-bold text-white"
-                                    target="_blank">Creative Tim</a>
-                                for a better web.
-                            </div>
+                            
                         </div>
 
                     </div>

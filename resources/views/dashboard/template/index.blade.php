@@ -54,7 +54,7 @@
                     <a class="nav-link text-white {{ Route::is('user') ? 'bg-gradient-primary' : '' }}"
                         href="{{ route('user') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
+                            <i class="material-icons opacity-10">person</i>
                         </div>
                         <span class="nav-link-text ms-1">User</span>
                     </a>
@@ -63,7 +63,7 @@
                     <a class="nav-link text-white {{ Route::is('message') ? 'bg-gradient-primary' : '' }} "
                         href="{{ route('message') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">receipt_long</i>
+                            <i class="material-icons opacity-10">email</i>
                         </div>
                         <span class="nav-link-text ms-1">Message</span>
                     </a>
@@ -72,7 +72,7 @@
                     <a class="nav-link text-white {{ Route::is('car') || Route::is('car_edit') || Route::is('car_detail') ? 'bg-gradient-primary' : '' }}"
                         href="{{ route('car') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">view_in_ar</i>
+                            <i class="material-icons opacity-10">toys</i>
                         </div>
                         <span class="nav-link-text ms-1">Car</span>
                     </a>
@@ -81,7 +81,7 @@
                     <a class="nav-link text-white {{ Route::is('category') ? 'bg-gradient-primary' : '' }} "
                         href="{{ route('category') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">notifications</i>
+                            <i class="material-icons opacity-10">category</i>
                         </div>
                         <span class="nav-link-text ms-1">Category</span>
                     </a>
@@ -90,7 +90,7 @@
                     <a class="nav-link text-white {{ Route::is('brand') ? 'bg-gradient-primary' : '' }} "
                         href="{{ route('brand') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">notifications</i>
+                            <i class="material-icons opacity-10">circle</i>
                         </div>
                         <span class="nav-link-text ms-1">Brand</span>
                     </a>

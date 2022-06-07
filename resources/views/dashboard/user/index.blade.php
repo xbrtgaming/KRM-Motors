@@ -85,7 +85,7 @@
                                     <td>{{ $users->email }}</td>
                                     <td>
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn bg-gradient-primary btn-sm fas fa-pencil-alt"
+                                        <button type="button" class="btn bg-gradient-primary btn-sm fas fa-edit"
                                             data-bs-toggle="modal" data-bs-target="#user_edit{{ $users->id }}">
                                         </button>
 
