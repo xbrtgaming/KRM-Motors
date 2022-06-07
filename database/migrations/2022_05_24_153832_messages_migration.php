@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
-            $table->integer('number')->unique();
+            $table->bigInteger('number')->unique();
             $table->string('order');
             $table->string('message')->nullable();
             $table->timestamps();
